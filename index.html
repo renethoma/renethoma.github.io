@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>René Thoma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0e0e0e;
+    --accent: #0E4000;
+    --white: #ffffff;
+    --grey: #888;
+    --light: #f4f4f2;
+    --border: #e0e0e0;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 56px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--black);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-filters {
+    display: flex;
+    gap: 4px;
+  }
+
+  .filter-btn {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--grey);
+    cursor: pointer;
+    padding: 5px 12px;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover { color: white; background: var(--accent); border-color: var(--accent); }
+  .filter-btn.active { color: white; background: var(--accent); border-color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey);
+    cursor: pointer;
+    transition: color 0.15s;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .nav-link:hover, .nav-link.active { color: white; background: var(--accent); padding: 4px 10px; border-radius: 2px; }
+
+  /* ── MAIN ── */
+  main { padding-top: 56px; }
+
+  /* ── GRID VIEW ── */
+  #view-grid {
+    padding: 40px 32px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .project-card {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--light);
+  }
+
+  .project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .project-card:hover img { transform: scale(1.03); }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(14,14,14,0);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    transition: background 0.3s;
+  }
+
+  .project-card:hover .card-overlay { background: rgba(14,14,14,0.55); }
+
+  .card-info {
+    transform: translateY(6px);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .project-card:hover .card-info { transform: translateY(0); opacity: 1; }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .card-meta {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+  }
+
+  /* video card thumbnail */
+  .project-card video-thumb,
+  .video-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .card-video-indicator {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-video-indicator::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid rgba(255,255,255,0.9);
+    margin-left: 2px;
+  }
+
+  /* hidden cards */
+  .project-card.hidden { display: none; }
+
+  /* ── PROJECT DETAIL VIEW ── */
+  #view-project {
+    display: none;
+    min-height: calc(100vh - 56px);
+    padding: 48px 32px 80px;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-header-left h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    color: var(--grey);
+  }
+
+  .project-desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--grey);
+    max-width: 360px;
+    margin-top: 16px;
+  }
+
+  .back-btn {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--grey);
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 32px;
+    margin-top: 4px;
+  }
+  .back-btn:hover { color: white; background: var(--accent); border-color: var(--accent); }
+
+  /* Image gallery — CSS grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    background: var(--light);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: zoom-in;
+  }
+
+  .gallery-item img:hover { transform: scale(1.02); }
+
+  /* Portrait: 2 of 8 cols — ratio 3:4 makes height equal to landscape */
+  .gallery-item.p1 {
+    grid-column: span 2;
+    aspect-ratio: 3 / 4;
+  }
+  /* Landscape: 4 of 8 cols — ratio 3:2 */
+  .gallery-item.landscape {
+    grid-column: span 4;
+    aspect-ratio: 3 / 2;
+  }
+  /* GIF */
+  .gallery-item.gif-item { grid-column: 1 / -1; }
+
+  /* Videos — separate grid below images */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 8px;
+    margin-top: 3px;
+  }
+
+  .video-grid-item {
+    border: 1px solid var(--border);
+    background: #000;
+    overflow: hidden;
+  }
+
+  .video-grid-item video {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    display: block;
+    object-fit: contain;
+    background: #000;
+  }
+
+  .video-grid-item.vertical {
+    max-width: 400px;
+    justify-self: center;
+  }
+
+  /* ── ABOUT VIEW ── */
+  #view-about {
+    display: none;
+    padding: 64px 32px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-portrait {
+    aspect-ratio: 3/4;
+    background: var(--light);
+    overflow: hidden;
+  }
+
+  .about-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+  }
+
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .about-text p {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 16px;
+  }
+
+  .about-text a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(14,64,0,0.25);
+    transition: border-color 0.15s;
+  }
+  .about-text a:hover { border-color: var(--accent); }
+
+  .about-details {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .detail-section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+
+  .detail-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+    font-size: 0.72rem;
+  }
+
+  .detail-label {
+    color: var(--grey);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .detail-value { color: var(--black); }
+
+  /* ── LIGHTBOX ── */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(180,180,175,0.92);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #lightbox.open { display: flex; }
+
+  #lightbox img {
+    max-width: 80vw;
+    max-height: 88vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  #lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(40,40,40,0.5);
+    cursor: pointer;
+    background: none;
+    border: none;
+    transition: color 0.15s;
+  }
+  #lightbox-close:hover { color: var(--black); }
+
+  #lightbox-prev, #lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    color: rgba(40,40,40,0.35);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    transition: color 0.15s;
+    font-family: var(--font-mono);
+    z-index: 10;
+  }
+  #lightbox-prev { left: 16px; }
+  #lightbox-next { right: 16px; }
+  #lightbox-prev:hover, #lightbox-next:hover { color: var(--black); }
+
+  #lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: rgba(40,40,40,0.4);
+  }
+
+
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    padding: 32px;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: right;
+  }
+
+  .footer-meta span {
+    color: var(--accent);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery { grid-template-columns: repeat(4, 1fr); }
+    .video-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    nav { padding: 0 20px; }
+    #view-grid, #view-project, #view-about { padding-left: 20px; padding-right: 20px; }
+    .nav-filters { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .project-header { flex-direction: column; gap: 16px; }
+    .back-btn { margin-left: 0; }
+    .nav-links { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" onclick="resetToHome()">René Thoma</a>
+  <div class="nav-right">
+    <div class="nav-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="photography">Photography</button>
+      <button class="filter-btn" data-filter="motion">Motion</button>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="showView('about')">About</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- GRID -->
+  <div id="view-grid">
+    <div class="grid" id="project-grid"></div>
+  </div>
+
+  <!-- PROJECT DETAIL -->
+  <div id="view-project">
+    <div class="project-header">
+      <div class="project-header-left">
+        <h1 id="proj-title"></h1>
+        <div class="project-tags" id="proj-tags"></div>
+        <p class="project-desc" id="proj-desc"></p>
+      </div>
+      <button class="back-btn" onclick="showView('grid')">← Back</button>
+    </div>
+    <div id="proj-gallery"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <!-- ABOUT -->
+  <div id="view-about">
+    <div class="about-grid">
+      <div class="about-portrait">
+        <img src="img/about/portrait.jpg" alt="René Thoma" onerror="this.parentElement.style.background='#e8e8e6'">
+      </div>
+      <div class="about-text">
+        <h2>René<br>Thoma</h2>
+        <p>Photographer and media producer based in Gundelfingen, currently completing a Master of Arts in Digital Communication Environments at FHNW/HGK Basel. BA in Design with a focus on CGI, animation and interaction design from TH Nürnberg, 2024.</p>
+        <p>Professional practice in photography and video since 2016, with a background in architectural and advertising photography. Strong visual sensibility grounded in architecture and the built environment, with working knowledge of the full production pipeline from concept through post-production.</p>
+        <div class="about-details">
+          <div class="detail-section-label">Experience</div>
+          <div class="detail-row"><span class="detail-label">2025–</span><span class="detail-value">Photography Tutor, FHNW Basel</span></div>
+          <div class="detail-row"><span class="detail-label">2024–</span><span class="detail-value">Freelance Photographer &amp; Assistant, Markus Edgar Ruf, Binzen</span></div>
+          <div class="detail-row"><span class="detail-label">2023–24</span><span class="detail-value">Working Student Corporate Design &amp; Marketing, Baloise Insurance AG, Basel</span></div>
+          <div class="detail-row"><span class="detail-label">2022–23</span><span class="detail-value">Intern Visual Design, F. Hoffmann-La Roche Ltd, Kaiseraugst</span></div>
+          <div class="detail-row"><span class="detail-label">2016–</span><span class="detail-value">Freelance Photographer, Self-employed</span></div>
+          <div class="detail-row"><span class="detail-label">2016–24</span><span class="detail-value">Freelance Photographer &amp; Assistant, Studio Rolf Frei / Galerie Underground, Weil am Rhein</span></div>
+          <div class="detail-section-label" style="margin-top:20px">Education</div>
+          <div class="detail-row"><span class="detail-label">2024–</span><span class="detail-value">MA Digital Communication Environments, FHNW - HGK Basel</span></div>
+          <div class="detail-row"><span class="detail-label">2020–24</span><span class="detail-value">BA Design — CGI, Animation, Interaction Design, TH Nürnberg.</span></div>
+          <div class="detail-row"><span class="detail-label">2018–19</span><span class="detail-value">Fachhochschulreife Gestaltung, Gertrud Luckner Gewerbeschule, Freiburg.</span></div>
+          <div class="detail-row"><span class="detail-label">2018</span><span class="detail-value">Journeyman's Certificate Photography, Gertrud Luckner Gewerbeschule</span></div>
+          <div class="detail-row"><span class="detail-label">2014–16</span><span class="detail-value">Vocational Certificate Photography &amp; Media Technology, Gertrud Luckner Gewerbeschule.</span></div>
+          <div class="detail-section-label" style="margin-top:20px">Tools</div>
+          <div class="detail-row"><span class="detail-label">Photo</span><span class="detail-value">Photoshop · Capture One · Lightroom · analogue processes</span></div>
+          <div class="detail-row"><span class="detail-label">Motion</span><span class="detail-value">DaVinci Resolve · Premiere Pro · After Effects · Blender · Blackmagic</span></div>
+          <div class="detail-row"><span class="detail-label">Design</span><span class="detail-value">InDesign · Illustrator · TouchDesigner · Metashape</span></div>
+          <div class="detail-row"><span class="detail-label">Other</span><span class="detail-value">HTML · CSS · Linux · Raspberry Pi</span></div>
+          <div class="detail-section-label" style="margin-top:20px">Languages</div>
+          <div class="detail-row"><span class="detail-label"></span><span class="detail-value">German — native · English — B2/C1 (TOEIC)</span></div>
+          <div class="detail-section-label" style="margin-top:20px">Contact</div>
+          <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value"><a href="mailto:rene.thoma98@gmail.com">rene.thoma98(at)gmail.com</a></span></div>          
+          <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-value"><a href="tel:+4917473494307">+49 174 734 94 07</a></span></div>
+          <div class="detail-row"><span class="detail-label">LinkedIn</span><span class="detail-value"><a href="https://www.linkedin.com/in/renethoma/" target="_blank">renethoma</a></span></div>
+          <div class="detail-row"><span class="detail-label">Based</span><span class="detail-value">Gundelfingen, Deutschland</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">René Thoma</div>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/renethoma/" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-meta">Gundelfingen, Deutschland &nbsp;·&nbsp; <span>Ref. B26-9</span> &nbsp;·&nbsp; © 2026</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">Close</button>
+  <button id="lightbox-prev" onclick="lightboxNav(-1)">&#8592;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button id="lightbox-next" onclick="lightboxNav(1)">&#8594;</button>
+  <div id="lightbox-counter"></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const PROJECTS = [
+  {
+    id: 'personal-work',
+    title: 'Personal Work',
+    year: '2018–',
+    categories: ['photography'],
+    description: 'An ongoing personal archive spanning landscapes, coastlines, and found scenes. Shot across Europe on both digital and analogue formats. No brief, no client. Just looking.',
+    cover: 'img/personal-work/GrandBallon_5006_256.jpg',
+    media: [
+      { type: 'img', src: 'img/personal-work/GrandBallon_5006_256.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF0581.JPG' },
+      { type: 'img', src: 'img/personal-work/_DSF0589.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9030.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF0586.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9017.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9027.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9028.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9057.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9064.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9210.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9212.jpg' },
+      { type: 'img', src: 'img/personal-work/_DSF9233.jpg' },
+      { type: 'img', src: 'img/personal-work/57F8B24F.jpeg' },
+      { type: 'img', src: 'img/personal-work/IMG_5530.jpeg' },
+      { type: 'img', src: 'img/personal-work/roll133.jpeg' },
+    ]
+  },
+  {
+    id: 'schoonheid',
+    title: 'Schoonheid Cosmetics',
+    year: '2023',
+    categories: ['photography'],
+    description: 'Commissioned photography for a cosmetic studio in Freiburg im Breisgau. The brief covered portraits of the owner, interior atmosphere, and exterior views. Delivered for website and social media use.',
+    cover: 'img/schoonheid/_DSF0826.jpg',
+    media: [
+      { type: 'img', src: 'img/schoonheid/_DSF0826.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0815-Bearbeitet.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0827.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0828.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0832.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0840.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0842.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0845.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0847.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0848.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0849.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF0856.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF6572.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF6648.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF6851.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF6948.jpg' },
+      { type: 'img', src: 'img/schoonheid/_DSF7449.jpg' },
+    ]
+  },
+  {
+    id: 'villa-hammer',
+    title: 'Villa Hammer',
+    year: '2018',
+    categories: ['photography'],
+    description: 'Architectural photography commissioned in Basel for the architecture firm Sauter von Moos. The project focused on the residential quality of the building, light, materiality, and the relationship between interior and exterior.',
+    cover: 'img/villa-hammer/_DSC8462_bearbeitet.png',
+    media: [
+      { type: 'img', src: 'img/villa-hammer/_DSC8462_bearbeitet.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8387.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8389.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8392.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8404.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8408.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8423.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8429.png' },
+      { type: 'img', src: 'img/villa-hammer/_DSC8439_bearbeitet.png' },
+    ]
+  },
+  {
+    id: 'brainlinks',
+    title: 'BrainLinks-BrainTools',
+    year: '2021',
+    categories: ['photography'],
+    description: 'Commissioned photography for BrainLinks-BrainTools, a neurotechnology research cluster at the University of Freiburg. The work documents the spatial character of the institute, its laboratories, circulation spaces, and architectural detail.',
+    cover: 'img/brainlinks/_DSC5044.jpg',
+    media: [
+      { type: 'img', src: 'img/brainlinks/_DSC5044.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC4898.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC4966-Bearbeitet.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC4973.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC4982.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC4984.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC4993.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC5101.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC5103.jpg' },
+      { type: 'img', src: 'img/brainlinks/_DSC5120.jpg' },
+    ]
+  },
+  {
+    id: 'creation-baumann',
+    title: 'Creation Baumann',
+    year: '2020',
+    categories: ['photography'],
+    description: 'Product photography commissioned by Swiss textile manufacturer Création Baumann. The images show their blinds and curtains in architectural settings, balancing material detail with spatial atmosphere. Used across website, print and brand communications.',
+    cover: 'img/creation-baumann/01_DSC0022_1_1.jpg',
+    media: [
+      { type: 'img', src: 'img/creation-baumann/01_DSC0022_1_1.jpg' },
+      { type: 'img', src: 'img/creation-baumann/03_DSC0107_1_1.jpg' },
+      { type: 'img', src: 'img/creation-baumann/05_DSC0223-1_1.jpg' },
+      { type: 'img', src: 'img/creation-baumann/_DSC0269-1_1.jpeg' },
+      { type: 'img', src: 'img/creation-baumann/_DSC0272-1_1.jpeg' },
+      { type: 'img', src: 'img/creation-baumann/_DSC0314-1_1.jpeg' },
+      { type: 'img', src: 'img/creation-baumann/CreationBaumann-138-Bearbeitet-Bearbeitet.jpg' },
+    ]
+  },
+  {
+    id: 'dreilandereck',
+    title: 'Dreiländereck',
+    year: '2025',
+    categories: ['photography', 'design'],
+    description: 'A university archive project investigating the lost railroad network of the Dreiländereck. The tri-border region of Germany, France and Switzerland. Combines field photography of overgrown tracks, custom satellite-overlay maps, and deliberately rusted aluminium signage. Presented as a book.',
+    cover: 'img/dreilandereck/_DSF9899.jpg',
+    media: [
+      { type: 'img', src: 'img/dreilandereck/_DSF9899.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF0001.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF9993.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF0002.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF0013.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF9246.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF9332.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF9424.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF9321.jpg' },
+      { type: 'img', src: 'img/dreilandereck/_DSF9912.jpg' },
+    ]
+  },
+  {
+    id: 'diy-camera',
+    title: 'DIY Camera',
+    year: '2026',
+    categories: ['photography'],
+    description: 'A camera built from scratch with classmate Luca Longa as part of a university hardware project at FHNW. Two modular devices assembled from single-board computers, designed so every component can be individually replaced. Documented through a stop-motion assembly sequence and test shots made with the finished cameras.',
+    cover: 'img/diy-camera/_DSF1952.png',
+    media: [
+      { type: 'img', src: 'img/diy-camera/_DSF1945.png' },
+      { type: 'img', src: 'img/diy-camera/_DSF1952.png' },
+      { type: 'img', src: 'img/diy-camera/assembly.gif' },
+      { type: 'img', src: 'img/diy-camera/photo_20260226_160049.jpg' },
+      { type: 'img', src: 'img/diy-camera/photo_20260226_160131.jpg' },
+      { type: 'img', src: 'img/diy-camera/photo_20260226_160228.jpg' },
+    ]
+  },
+  {
+    id: 'yumenity',
+    title: 'Yumenity',
+    year: '2025',
+    categories: ['photography', 'motion'],
+    description: 'Photo and video production for Yumenity, a fitness and activewear brand. The content was developed for social media combining studio-style stills with short clips that match the energy of the brand.',
+    cover: 'img/yumenity/_DSF1259.png',
+    media: [
+      { type: 'img', src: 'img/yumenity/_DSF1259.png' },
+      { type: 'img', src: 'img/yumenity/_DSF1104.png' },
+      { type: 'img', src: 'img/yumenity/_DSF1133.png' },
+      { type: 'img', src: 'img/yumenity/_DSF1187.png' },
+      { type: 'video', src: 'video/yumenity/Clip1_.mov', vertical: true },
+      { type: 'video', src: 'video/yumenity/Clip2_.mov', vertical: true },
+      { type: 'video', src: 'video/yumenity/Clip3_.mov', vertical: true },
+    ]
+  },
+  {
+    id: 'ueli-bier',
+    title: 'Ueli Bier',
+    year: '2024',
+    categories: ['motion'],
+    description: 'A cinema advertisement produced for Ueli Bier, a brewery rooted in Basel. The spot was created to run in movie theatres. Short, direct, and built around the character of the brand.',
+    cover: null,
+    coverVideo: 'video/ueli-bier/Ueli_Bier_Final.mp4',
+    media: [
+      { type: 'video', src: 'video/ueli-bier/Ueli_Bier_Final.mp4' },
+    ]
+  },
+  {
+    id: 'helios',
+    title: 'Helios Kliniken Müllheim',
+    year: '2025',
+    categories: ['motion'],
+    description: 'Short video content produced for Helios Kliniken Müllheim for use on social media and the clinic website. Two vertical clips and one longer horizontal format, each designed to communicate the atmosphere clearly and accessibly.',
+    cover: null,
+    coverVideo: 'video/helios/Mu_llheim_10s.mp4',
+    media: [
+      { type: 'video', src: 'video/helios/Mu_llheim_10s.mp4', vertical: true },
+      { type: 'video', src: 'video/helios/Mu_llheim_10s_2.mp4', vertical: true },
+      { type: 'video', src: 'video/helios/Mu_llheim_30s.mp4' },
+    ]
+  },
+  {
+    id: 'visual',
+    title: 'Visual — Type Animation',
+    year: '2025',
+    categories: ['motion'],
+    description: 'A type animation produced during a university motion design workshop. The piece explores the character of a typeface called Visual using movement to reveal form, rhythm, and personality in the letterforms.',
+    cover: null,
+    coverVideo: 'video/visual/Rene_Visual.mp4',
+    media: [
+      { type: 'video', src: 'video/visual/Rene_Visual.mp4' },
+    ]
+  },
+  {
+    id: 'manifesto',
+    title: 'Critical Publishing',
+    year: '2025',
+    categories: ['motion'],
+    description: 'A short documentation of a manifesto made for a university course on Critical Publishing. The project asks whether publishing still matters in 2025, and argues that it does. The clip documents the actual form of publishing on a website. In order to read the manifesto the user has to take screenshots.',
+    cover: null,
+    coverVideo: 'video/manifesto/video_manifesto_.mp4',
+    media: [
+      { type: 'video', src: 'video/manifesto/video_manifesto_.mp4' },
+    ]
+  },
+  {
+    id: 'if-you-can-hear-me',
+    title: 'If You Can Hear Me',
+    year: '2026',
+    categories: ['motion'],
+    description: 'A short film made for a university video class. A man on a phone call ducks into a phone booth to escape the noise of the city and finds himself unable to leave, forced to listen to the conversations of strangers passing through. Shot in Basel, 2026.',
+    cover: 'img/if-you-can-hear-me/cover.png',
+    media: [
+      { type: 'img', src: 'img/if-you-can-hear-me/cover.png' },
+      { type: 'video', src: 'video/if-you-can-hear-me/if-you-can-hear-me.mp4', poster: 'img/if-you-can-hear-me/cover.png' },
+    ]
+  },
+];
+
+let currentFilter = 'all';
+
+function buildGrid() {
+  const grid = document.getElementById('project-grid');
+  grid.innerHTML = '';
+
+  PROJECTS.forEach(project => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.dataset.categories = project.categories.join(' ');
+    card.dataset.id = project.id;
+
+    // Determine if hidden based on filter
+    if (currentFilter !== 'all' && !project.categories.includes(currentFilter)) {
+      card.classList.add('hidden');
+    }
+
+    if (project.cover) {
+      card.innerHTML = `
+        <img src="${project.cover}" alt="${project.title}" loading="lazy">
+        <div class="card-overlay">
+          <div class="card-info">
+            <div class="card-title">${project.title}</div>
+            <div class="card-meta">${project.categories.join(' · ')} · ${project.year}</div>
+          </div>
+        </div>
+      `;
+    } else if (project.coverVideo) {
+      card.innerHTML = `
+        <video class="video-cover" src="${project.coverVideo}" muted autoplay loop playsinline></video>
+        <div class="card-video-indicator"></div>
+        <div class="card-overlay">
+          <div class="card-info">
+            <div class="card-title">${project.title}</div>
+            <div class="card-meta">${project.categories.join(' · ')} · ${project.year}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    card.addEventListener('click', () => openProject(project.id));
+    grid.appendChild(card);
+  });
+}
+
+function openProject(id) {
+  const project = PROJECTS.find(p => p.id === id);
+  if (!project) return;
+
+  document.getElementById('proj-title').textContent = project.title;
+
+  const tagsEl = document.getElementById('proj-tags');
+  tagsEl.innerHTML = '';
+  project.categories.forEach(cat => {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = cat;
+    tagsEl.appendChild(tag);
+  });
+  const yearTag = document.createElement('span');
+  yearTag.className = 'tag';
+  yearTag.textContent = project.year;
+  tagsEl.appendChild(yearTag);
+
+  document.getElementById('proj-desc').textContent = project.description;
+
+  const gallery = document.getElementById('proj-gallery');
+  gallery.innerHTML = '';
+
+  const allImgSrcs = project.media.filter(m => m.type === 'img').map(m => m.src);
+  const images = project.media.filter(m => m.type === 'img');
+  const videos = project.media.filter(m => m.type === 'video');
+
+  // ── Image grid ──
+  // Load all images first to know orientations, then build grid intelligently
+  if (images.length > 0) {
+    const imgGrid = document.createElement('div');
+    imgGrid.className = 'gallery';
+    gallery.appendChild(imgGrid);
+
+    // Load orientations for all images, then assign grid spans smartly
+    let loaded = 0;
+    const orientations = new Array(images.length).fill(null);
+    const divs = [];
+
+    images.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = project.title;
+      img.loading = 'lazy';
+      img.addEventListener('click', () => openLightbox(item.src, allImgSrcs));
+      div.appendChild(img);
+      imgGrid.appendChild(div);
+      divs.push(div);
+
+      const probe = new Image();
+      probe.onload = () => {
+        orientations[i] = probe.naturalHeight > probe.naturalWidth ? 'portrait' : 'landscape';
+        loaded++;
+        if (loaded === images.length) applyLayout();
+      };
+      // If image fails to load, still mark it
+      probe.onerror = () => {
+        orientations[i] = 'landscape';
+        loaded++;
+        if (loaded === images.length) applyLayout();
+      };
+      probe.src = item.src;
+    });
+
+    function applyLayout() {
+      divs.forEach((div, i) => {
+        div.classList.add(orientations[i] === 'portrait' ? 'p1' : 'landscape');
+      });
+    }
+  }
+
+  // ── Video grid ──
+  // Group videos into rows: vertical videos share a row, horizontal videos each get their own row
+  if (videos.length > 0) {
+    function makeVideoCell(item) {
+      const cell = document.createElement('div');
+      cell.className = 'video-grid-item' + (item.vertical ? ' vertical' : '');
+      const video = document.createElement('video');
+      video.src = item.src;
+      video.controls = true;
+      video.loop = true;
+      if (item.poster) video.poster = item.poster;
+      cell.appendChild(video);
+      return cell;
+    }
+
+    const verticals = videos.filter(v => v.vertical);
+    const horizontals = videos.filter(v => !v.vertical);
+
+    // Vertical videos → one shared row
+    if (verticals.length > 0) {
+      const row = document.createElement('div');
+      row.className = 'video-grid';
+      verticals.forEach(item => row.appendChild(makeVideoCell(item)));
+      gallery.appendChild(row);
+    }
+
+    // Horizontal videos → each in its own row
+    horizontals.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'video-grid';
+      row.appendChild(makeVideoCell(item));
+      gallery.appendChild(row);
+    });
+  }
+
+  // ── Bottom back button ──
+  const bottomBack = document.createElement('button');
+  bottomBack.className = 'back-btn';
+  bottomBack.style.marginTop = '48px';
+  bottomBack.style.marginLeft = '0';
+  bottomBack.textContent = '← Back';
+  bottomBack.addEventListener('click', () => showView('grid'));
+  gallery.appendChild(bottomBack);
+
+  showView('project');
+  window.scrollTo(0, 0);
+}
+
+function showView(view) {
+  // Stop any playing videos when leaving project view
+  if (view !== 'project') {
+    document.querySelectorAll('#view-project video').forEach(v => {
+      v.pause();
+      v.currentTime = 0;
+    });
+  }
+
+  document.getElementById('view-grid').style.display = view === 'grid' ? 'block' : 'none';
+  document.getElementById('view-project').style.display = view === 'project' ? 'block' : 'none';
+  document.getElementById('view-about').style.display = view === 'about' ? 'block' : 'none';
+
+  // update nav active state
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  if (view === 'about') document.querySelector('.nav-link').classList.add('active');
+}
+
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function openLightbox(src, allImages) {
+  lightboxImages = allImages || [src];
+  lightboxIndex = lightboxImages.indexOf(src);
+  if (lightboxIndex === -1) lightboxIndex = 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+  document.getElementById('lightbox-img').src = lightboxImages[lightboxIndex];
+  document.getElementById('lightbox-counter').textContent =
+    (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+  document.getElementById('lightbox-prev').style.opacity = lightboxImages.length > 1 ? '1' : '0';
+  document.getElementById('lightbox-next').style.opacity = lightboxImages.length > 1 ? '1' : '0';
+}
+
+function lightboxNav(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  updateLightbox();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentFilter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      const cats = card.dataset.categories.split(' ');
+      if (currentFilter === 'all' || cats.includes(currentFilter)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+ 
+    showView('grid');
+  });
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') lightboxNav(1);
+  if (e.key === 'ArrowLeft') lightboxNav(-1);
+});
+
+// Click backdrop to close
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+
+// Init
+buildGrid();
+showView('grid');
+
+function resetToHome() {
+  currentFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.filter === 'all');
+  });
+  document.querySelectorAll('.project-card').forEach(card => card.classList.remove('hidden'));
+  showView('grid');
+}
+</script>
+</body>
+</html>
