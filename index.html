@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>René Thoma Showreel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #1b3320; }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  .video-row { display: grid; grid-template-columns: minmax(160px,220px) 1fr; gap: clamp(24px,4vw,56px); align-items: start; margin-bottom: clamp(160px,20vw,260px); }
+  @media (max-width: 760px) { .video-row { grid-template-columns: 1fr; } }
+  /* Hover-Zustände als echtes CSS. Deckkraft bewusst NICHT inline,
+     sonst würde der Inline-Style den :hover überstimmen. */
+  .nav-link { opacity: 0.75; transition: opacity 0.2s; }
+  .nav-link:hover { opacity: 1; }
+  .email-link { opacity: 0.75; transition: opacity 0.2s; }
+  .email-link:hover { opacity: 1; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div style="font-family: 'Space Grotesk', sans-serif; background: #1b3320; color: rgba(255,255,255,0.97); min-height: 100vh;">
+
+  <!-- Navigation -->
+  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: clamp(16px,3vw,28px) clamp(20px,4vw,48px); background: rgba(27,51,32,0.82); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <div style="display: flex; gap: clamp(18px,3vw,36px);">
+      <a href="#showreel" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Showreel</a>
+      <a href="#motionreel" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Motion Reel</a>
+      <a href="#kurzfilm" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Kurzfilm</a>
+      <a href="#rene" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Über</a>
+    </div>
+    <div style="font-size: 13px; letter-spacing: 0.1em; font-weight: 600;">RT</div>
+  </nav>
+
+  <!-- Showreel -->
+  <section id="showreel" style="padding: clamp(110px,14vw,150px) clamp(12px,2vw,32px) 0; max-width: 1760px; margin: 0 auto; scroll-margin-top: 130px;">
+    <div class="video-row">
+      <div>
+        <h1 style="font-size: clamp(18px,2vw,22px); font-weight: 500; margin: 0 0 12px 0;">Showreel 2026</h1>
+        <p style="font-size: 14px; line-height: 1.6; opacity: 0.65; margin: 0;">Diskuswerfen, ein Besuch beim Augenarzt, Sommer und die Tour de France. </p>
+      </div>
+      <!-- Responsive 16:9 video wrapper -->
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: rgba(255,255,255,0.03);">
+        <iframe src="https://player.vimeo.com/video/1228816438?h=15cbe0fab5&badge=0&autopause=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motion Reel -->
+  <section id="motionreel" style="padding: 0 clamp(12px,2vw,32px); max-width: 1760px; margin: 0 auto; scroll-margin-top: 130px;">
+    <div class="video-row">
+      <div>
+        <h2 style="font-size: clamp(18px,2vw,22px); font-weight: 500; margin: 0 0 12px 0;">Motion Reel</h2>
+        <p style="font-size: 14px; line-height: 1.6; opacity: 0.65; margin: 0;">Rebranding für Schweizer Hagel, ein Tease für die Schrift "Visual", KI generierte Videos und freies Motiondesign über mich selbst.</p>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: rgba(255,255,255,0.03);">
+        <iframe src="https://player.vimeo.com/video/1229107039?h=084e20ea56&badge=0&autopause=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kurzfilm (untergeordnet) -->
+  <section id="kurzfilm" style="padding: 0 clamp(12px,2vw,32px); max-width: 1400px; margin: 0 auto; scroll-margin-top: 130px;">
+    <div class="video-row">
+      <div>
+        <h3 style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin: 0 0 10px 0; opacity: 0.7;">Kurzfilm</h3>
+        <p style="font-size: 13px; line-height: 1.6; opacity: 0.55; margin: 0;">„If you can hear me" — ein Kurzfilm über das Leben in der Stadt, die Zeit mit dem Smartphone und die Begegnung mit Fremden.</p>
+      </div>
+      <div style="position: relative; padding-bottom: 41.88%; height: 0; overflow: hidden; background: rgba(255,255,255,0.03);">
+        <iframe src="https://player.vimeo.com/video/1173379700?h=4cbd26c608&badge=0&autopause=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- René Thoma -->
+  <section id="rene" style="padding: clamp(80px,10vw,120px) clamp(20px,4vw,48px) clamp(100px,14vw,160px); max-width: 1160px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); scroll-margin-top: 130px;">
+    <h2 style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; font-weight: 500; margin: 0 0 clamp(32px,5vw,48px) 0;">René Thoma</h2>
+    <p style="font-size: clamp(16px,2.2vw,19px); line-height: 1.7; max-width: 620px; margin: 0 0 clamp(40px,6vw,56px) 0; opacity: 0.9;">
+      Ich bin Fotograf, Videograf und Designer. Mich interessiert die Schnittstelle zwischen analogen und digitalen Medien. Fotografieren, Filmen, Schneiden begleiten mich in meinem Alltag.
+    </p>
+    <a href="mailto:rene.thoma98@gmail.com" class="email-link" style="font-size: 15px;">rene.thoma98@gmail.com</a>
+  </section>
+
+</div>
+
+</body>
+</html>
