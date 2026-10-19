@@ -1,91 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>René Thoma Showreel</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  body { margin: 0; background: #1b3320; }
-  * { box-sizing: border-box; }
-  a { color: inherit; text-decoration: none; }
-  .video-row { display: grid; grid-template-columns: minmax(160px,220px) 1fr; gap: clamp(24px,4vw,56px); align-items: start; margin-bottom: clamp(160px,20vw,260px); }
-  @media (max-width: 760px) { .video-row { grid-template-columns: 1fr; } }
-  /* Hover-Zustände als echtes CSS. Deckkraft bewusst NICHT inline,
-     sonst würde der Inline-Style den :hover überstimmen. */
-  .nav-link { opacity: 0.75; transition: opacity 0.2s; }
-  .nav-link:hover { opacity: 1; }
-  .email-link { opacity: 0.75; transition: opacity 0.2s; }
-  .email-link:hover { opacity: 1; text-decoration: underline; }
-</style>
+<title>René Thoma, Fotografie und Bewegtbild</title>
+<meta name="description" content="René Thoma, Fotograf und Videoproduzent. Porträt, Reportage, Architektur, Event und Bewegtbild.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>try{if(localStorage.getItem('rt-theme')==='blau')document.documentElement.setAttribute('data-theme','blau')}catch(e){}</script>
 </head>
-<body>
-
-<div style="font-family: 'Space Grotesk', sans-serif; background: #1b3320; color: rgba(255,255,255,0.97); min-height: 100vh;">
-
-  <!-- Navigation -->
-  <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: clamp(16px,3vw,28px) clamp(20px,4vw,48px); background: rgba(27,51,32,0.82); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <div style="display: flex; gap: clamp(18px,3vw,36px);">
-      <a href="#showreel" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Showreel</a>
-      <a href="#motionreel" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Motion Reel</a>
-      <a href="#kurzfilm" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Kurzfilm</a>
-      <a href="#rene" class="nav-link" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;">Über</a>
-    </div>
-    <div style="font-size: 13px; letter-spacing: 0.1em; font-weight: 600;">RT</div>
-  </nav>
-
-  <!-- Showreel -->
-  <section id="showreel" style="padding: clamp(110px,14vw,150px) clamp(12px,2vw,32px) 0; max-width: 1760px; margin: 0 auto; scroll-margin-top: 130px;">
-    <div class="video-row">
-      <div>
-        <h1 style="font-size: clamp(18px,2vw,22px); font-weight: 500; margin: 0 0 12px 0;">Showreel 2026</h1>
-        <p style="font-size: 14px; line-height: 1.6; opacity: 0.65; margin: 0;">Diskuswerfen, ein Besuch beim Augenarzt, Sommer und die Tour de France. </p>
-      </div>
-      <!-- Responsive 16:9 video wrapper -->
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: rgba(255,255,255,0.03);">
-        <iframe src="https://player.vimeo.com/video/1228816438?h=15cbe0fab5&badge=0&autopause=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Motion Reel -->
-  <section id="motionreel" style="padding: 0 clamp(12px,2vw,32px); max-width: 1760px; margin: 0 auto; scroll-margin-top: 130px;">
-    <div class="video-row">
-      <div>
-        <h2 style="font-size: clamp(18px,2vw,22px); font-weight: 500; margin: 0 0 12px 0;">Motion Reel</h2>
-        <p style="font-size: 14px; line-height: 1.6; opacity: 0.65; margin: 0;">Rebranding für Schweizer Hagel, ein Teaser für die Schrift "Visual", freies Motiondesign über mich und KI generierte Videos.</p>
-      </div>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: rgba(255,255,255,0.03);">
-        <iframe src="https://player.vimeo.com/video/1229107039?h=084e20ea56&badge=0&autopause=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Kurzfilm (untergeordnet) -->
-  <section id="kurzfilm" style="padding: 0 clamp(12px,2vw,32px); max-width: 1400px; margin: 0 auto; scroll-margin-top: 130px;">
-    <div class="video-row">
-      <div>
-        <h3 style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin: 0 0 10px 0; opacity: 0.7;">Kurzfilm</h3>
-        <p style="font-size: 13px; line-height: 1.6; opacity: 0.55; margin: 0;">„If you can hear me" — ein Kurzfilm über das Leben in der Stadt, die Zeit mit dem Smartphone und die Begegnung mit Fremden.</p>
-      </div>
-      <div style="position: relative; padding-bottom: 41.88%; height: 0; overflow: hidden; background: rgba(255,255,255,0.03);">
-        <iframe src="https://player.vimeo.com/video/1173379700?h=4cbd26c608&badge=0&autopause=0&title=0&byline=0&portrait=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- René Thoma -->
-  <section id="rene" style="padding: clamp(80px,10vw,120px) clamp(20px,4vw,48px) clamp(100px,14vw,160px); max-width: 1160px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); scroll-margin-top: 130px;">
-    <h2 style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; font-weight: 500; margin: 0 0 clamp(32px,5vw,48px) 0;">René Thoma</h2>
-    <p style="font-size: clamp(16px,2.2vw,19px); line-height: 1.7; max-width: 620px; margin: 0 0 clamp(40px,6vw,56px) 0; opacity: 0.9;">
-      Ich bin Fotograf, Videograf und Designer. Fotografieren, Filmen und Schneiden begleiten mich schon lange in meinem Alltag. Besonders interessiert bin ich an der Schnittstelle zwischen analogen und digitale Medien.
-    </p>
-    <a href="mailto:rene.thoma98@gmail.com" class="email-link" style="font-size: 15px;">rene.thoma98@gmail.com</a>
-  </section>
-
+<body data-page="arbeiten" data-view="raster" data-level="0">
+<header class="top">
+<a class="brand" href="index.html">René Thoma</a>
+<div class="ctrl desk"><button type="button" class="tg" data-view="raster" aria-pressed="true">Raster</button><span>/</span><button type="button" class="tg" data-view="liste" aria-pressed="false">Liste</button>
+<span class="zoom"><button type="button" data-z="less" aria-label="Bilder kleiner"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12"/></svg></button><button type="button" data-z="more" aria-label="Bilder grösser"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></button></span></div>
+<nav class="nav desk" aria-label="Hauptnavigation"><a href="index.html" aria-current="page">Arbeiten</a>, <a href="raw.html">Raw</a>, <a href="kontakt.html">Kontakt</a></nav>
+<div class="desk"><div class="dots" role="group" aria-label="Farbe"><button type="button" class="dot w" data-theme="weiss" aria-label="Weisser Hintergrund" aria-pressed="true"></button><button type="button" class="dot b" data-theme="blau" aria-label="Blauer Hintergrund" aria-pressed="false"></button></div></div>
+</header>
+<button type="button" class="menubtn mob" aria-expanded="false" aria-controls="menu">Menü</button>
+<nav id="menu" class="menu mob" aria-label="Menü" hidden>
+<a href="index.html" aria-current="page">Arbeiten</a>
+<a href="raw.html">Raw</a>
+<a href="kontakt.html">Kontakt</a>
+<span class="row"><button type="button" class="tg" data-view="raster" aria-pressed="true">Raster</button><button type="button" class="tg" data-view="liste" aria-pressed="false">Liste</button></span><div class="dots" role="group" aria-label="Farbe"><button type="button" class="dot w" data-theme="weiss" aria-label="Weisser Hintergrund" aria-pressed="true"></button><button type="button" class="dot b" data-theme="blau" aria-label="Blauer Hintergrund" aria-pressed="false"></button></div>
+</nav>
+<main class="work">
+<h1 class="sr">Arbeiten</h1>
+<div class="grid">
+<a class="proj" href="projekte/showreel.html">
+<div class="txt"><h2>Showreel 2026</h2><p>Video und Schnitt, 2:20 Minuten (2026)</p></div>
+<div class="imgs one">
+<span class="it vid" style="flex-grow:1.7778"><img src="img/f2f97adc882f-1000.jpg" srcset="img/f2f97adc882f-1000.jpg 1000w, img/f2f97adc882f-2000.jpg 2000w" sizes="(max-width:760px) 100vw, 75vw" width="2400" height="1352" alt="Standbild aus dem Showreel"><svg class="play" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="27" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M23 18l16 10-16 10z" fill="currentColor"/></svg><span class="vl">Showreel 2026, 2:20</span></span>
 </div>
-
+</a>
+<a class="proj" href="projekte/colorful-neighbourhood.html">
+<div class="txt"><h2>Colorful Neighbourhood</h2><p>Bildwelt für den Website-Relaunch eines Freiburger Herrenausstatters (2026)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:1.3333"><img src="img/e9eda4557e0c-1000.jpg" srcset="img/e9eda4557e0c-1000.jpg 1000w, img/e9eda4557e0c-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1800" alt="Ladenfront in der Konviktstrasse mit runden Schaufenstern" loading="lazy"></span>
+<span class="it" style="flex-grow:0.7500"><img src="img/14067c716763-1000.jpg" srcset="img/14067c716763-1000.jpg 750w, img/14067c716763-2000.jpg 1500w" sizes="(max-width:760px) 50vw, 25vw" width="1800" height="2400" alt="Zwei Cappuccino auf einem silbernen Tablett" loading="lazy"></span>
+<span class="it" style="flex-grow:1.3333"><img src="img/1d4076e8dc8e-1000.jpg" srcset="img/1d4076e8dc8e-1000.jpg 1000w, img/1d4076e8dc8e-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1800" alt="Langer Verkaufsraum mit Regalen, Kleiderstangen und Mützen an der Wand" loading="lazy"></span>
+<span class="it" style="flex-grow:0.7500"><img src="img/033aab1c32c9-1000.jpg" srcset="img/033aab1c32c9-1000.jpg 750w, img/033aab1c32c9-2000.jpg 1500w" sizes="(max-width:760px) 50vw, 25vw" width="1800" height="2400" alt="Tätowierter Unterarm und Massband auf dem Tisch" loading="lazy"></span>
+<span class="it" style="flex-grow:1.3333"><img src="img/33000febfd11-1000.jpg" srcset="img/33000febfd11-1000.jpg 1000w, img/33000febfd11-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1800" alt="Hand wählt aus einer Kollektion von Knöpfen" loading="lazy"></span>
+<span class="it" style="flex-grow:0.7500"><img src="img/9a954bac3c5d-1000.jpg" srcset="img/9a954bac3c5d-1000.jpg 750w, img/9a954bac3c5d-2000.jpg 1500w" sizes="(max-width:760px) 50vw, 25vw" width="1800" height="2400" alt="Blick von oben auf einen Mann mit Hut zwischen Kleiderstangen" loading="lazy"></span>
+<span class="it" style="flex-grow:1.3333"><img src="img/196c20c9db1c-1000.jpg" srcset="img/196c20c9db1c-1000.jpg 1000w, img/196c20c9db1c-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1800" alt="Geschwungene Treppe vor einer Wand aus Weinflaschen, davor ein roter Tisch" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/seven-purple-tigers.html">
+<div class="txt"><h2>Seven Purple Tigers</h2><p>Konzert der Band am Zelt-Musik-Festival Freiburg (2022)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:1.5000"><img src="img/abcf3ff16cac-1000.jpg" srcset="img/abcf3ff16cac-1000.jpg 1000w, img/abcf3ff16cac-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Gitarrist im roten Jackett auf der Bühne" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/e90e079e3909-1000.jpg" srcset="img/e90e079e3909-1000.jpg 667w, img/e90e079e3909-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Hände an einer weissen Gitarre im roten Licht" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/94eaf172c4c8-1000.jpg" srcset="img/94eaf172c4c8-1000.jpg 1000w, img/94eaf172c4c8-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Roter Hut und Ventilator auf dem Bühnenboden" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/d890d22e2b56-1000.jpg" srcset="img/d890d22e2b56-1000.jpg 1000w, img/d890d22e2b56-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Publikum als Silhouette vor der Bühne" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/ede5ba146009-1000.jpg" srcset="img/ede5ba146009-1000.jpg 1000w, img/ede5ba146009-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Gelbe Gitarre im Bühnenlicht" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/fecc31b3d646-1000.jpg" srcset="img/fecc31b3d646-1000.jpg 1000w, img/fecc31b3d646-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Band im Gegenlicht, schwarzweiss" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/75c339c89889-1000.jpg" srcset="img/75c339c89889-1000.jpg 1000w, img/75c339c89889-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Musiker mit Hut und Gitarre im Backstage, schwarzweiss" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/hermann-scherer.html">
+<div class="txt"><h2>Hermann Scherer, Kunstmuseum Basel</h2><p>Dokumentation der Ausstellung im Kunstmuseum Basel (2022)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:1.4888"><img src="img/b849b37de5a9-1000.jpg" srcset="img/b849b37de5a9-1000.jpg 1000w, img/b849b37de5a9-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1612" alt="Eingangswand mit dem Titel der Ausstellung Hermann Scherer" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/ff38639426c6-1000.jpg" srcset="img/ff38639426c6-1000.jpg 1000w, img/ff38639426c6-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Holzfiguren auf Sockeln vor roter Wand, dahinter ein Besucher" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/499694a27505-1000.jpg" srcset="img/499694a27505-1000.jpg 1000w, img/499694a27505-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Zwei Holzfiguren eines Paares in Nahaufnahme" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/613250f105f8-1000.jpg" srcset="img/613250f105f8-1000.jpg 1000w, img/613250f105f8-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Zwei Besucherinnen vor einer Wand mit Holzschnitten" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/96c48aa09b94-1000.jpg" srcset="img/96c48aa09b94-1000.jpg 1000w, img/96c48aa09b94-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Liegende bemalte Holzskulptur auf einem Sockel" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/1b7399447f49-1000.jpg" srcset="img/1b7399447f49-1000.jpg 1000w, img/1b7399447f49-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Zwei bemalte Holzköpfe vor roter Wand" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/fd64323eb380-1000.jpg" srcset="img/fd64323eb380-1000.jpg 1000w, img/fd64323eb380-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Stehende Holzfigur vor roter Wand mit Blick in den grauen Raum" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/dreilaendereck.html">
+<div class="txt"><h2>Dreiländereck</h2><p>Stillgelegte Bahnstrecken zwischen der Schweiz, Deutschland und Frankreich, Masterprojekt an der HGK Basel (2025)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:0.6667"><img src="img/87768e202f77-1000.jpg" srcset="img/87768e202f77-1000.jpg 667w, img/87768e202f77-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 24" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/cc51a7aee5bf-1000.jpg" srcset="img/cc51a7aee5bf-1000.jpg 667w, img/cc51a7aee5bf-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 6" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/edced7082738-1000.jpg" srcset="img/edced7082738-1000.jpg 1000w, img/edced7082738-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 15" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/175dc982fbe2-1000.jpg" srcset="img/175dc982fbe2-1000.jpg 667w, img/175dc982fbe2-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 27" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/f94689a8d076-1000.jpg" srcset="img/f94689a8d076-1000.jpg 667w, img/f94689a8d076-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 35" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/1b256c07d0df-1000.jpg" srcset="img/1b256c07d0df-1000.jpg 1000w, img/1b256c07d0df-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 30" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/d6b19b3143a6-1000.jpg" srcset="img/d6b19b3143a6-1000.jpg 1000w, img/d6b19b3143a6-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Stillgelegte Bahnstrecke im Dreiländereck, Bild 47" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/schoonheid-cosmetics.html">
+<div class="txt"><h2>Schoonheid Cosmetics</h2><p>Porträts und Räume für Website und Social Media (2025)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:0.6667"><img src="img/3f17d7020bc3-1000.jpg" srcset="img/3f17d7020bc3-1000.jpg 667w, img/3f17d7020bc3-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Frau im schwarzen Anzug sitzt und blickt in die Kamera" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/9c6af763c948-1000.jpg" srcset="img/9c6af763c948-1000.jpg 667w, img/9c6af763c948-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Ladenfront in einer Altstadtgasse mit Fahrrad" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/d8948c1d39b4-1000.jpg" srcset="img/d8948c1d39b4-1000.jpg 667w, img/d8948c1d39b4-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Porträt im schwarzen Mantel mit verschränkten Armen" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/6ab8caf41ea3-1000.jpg" srcset="img/6ab8caf41ea3-1000.jpg 667w, img/6ab8caf41ea3-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Hände mit Ringen halten einen schwarzen Mantel" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/47e62809a99e-1000.jpg" srcset="img/47e62809a99e-1000.jpg 667w, img/47e62809a99e-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Detail einer Hand mit Ringen auf der Schulter" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/89fd29c24887-1000.jpg" srcset="img/89fd29c24887-1000.jpg 667w, img/89fd29c24887-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Geschwungenes Sofa und runder Tisch in warmem Licht" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/eggimann.html">
+<div class="txt"><h2>Weine der Familie Eggimann</h2><p>Dokumentation der Weinlese, vom Rebberg bis zum Abtransport (2024)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:0.6667"><img src="img/44bced6326ff-1000.jpg" srcset="img/44bced6326ff-1000.jpg 667w, img/44bced6326ff-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Hand hält eine Traube über einer gelben Lesekiste" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/cc0ce2ec35ed-1000.jpg" srcset="img/cc0ce2ec35ed-1000.jpg 667w, img/cc0ce2ec35ed-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Mann in orangem Pullover neben einem Anhänger mit Stahltank" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/39f23fcab4e4-1000.jpg" srcset="img/39f23fcab4e4-1000.jpg 1000w, img/39f23fcab4e4-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Trauben fallen in einen Stahltank" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/07cb7e371479-1000.jpg" srcset="img/07cb7e371479-1000.jpg 667w, img/07cb7e371479-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Älterer Mann in der Rebzeile, daneben gelbe Kisten" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/35e5c1c5437e-1000.jpg" srcset="img/35e5c1c5437e-1000.jpg 667w, img/35e5c1c5437e-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Hände schneiden mit oranger Rebschere Trauben" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/28d5ea84382c-1000.jpg" srcset="img/28d5ea84382c-1000.jpg 667w, img/28d5ea84382c-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Blaue Trauben zwischen Weinlaub" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/fc9a53aa041c-1000.jpg" srcset="img/fc9a53aa041c-1000.jpg 667w, img/fc9a53aa041c-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Nebel über einem bewaldeten Hügel" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/creation-baumann.html">
+<div class="txt"><h2>Création Baumann</h2><p>Werbefotografie mit Stoffen im Raum, für Website, Katalog und Werbung (2020)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:0.7500"><img src="img/d64ee00460ca-1000.jpg" srcset="img/d64ee00460ca-1000.jpg 750w, img/d64ee00460ca-2000.jpg 1500w" sizes="(max-width:760px) 50vw, 25vw" width="1800" height="2400" alt="Türkise Vorhänge mit schwarzer Pendelleuchte über einem Tisch" loading="lazy"></span>
+<span class="it" style="flex-grow:0.4646"><img src="img/69baf521e68c-1000.jpg" srcset="img/69baf521e68c-1000.jpg 465w, img/69baf521e68c-2000.jpg 929w" sizes="(max-width:760px) 50vw, 25vw" width="1115" height="2400" alt="Türkise Lamellen am Fenster, davor ein Stuhl" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/b98d00938411-1000.jpg" srcset="img/b98d00938411-1000.jpg 1000w, img/b98d00938411-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Lamellen mit Blätterdruck, davor ein Holzstuhl" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/9f0c9c6f22f2-1000.jpg" srcset="img/9f0c9c6f22f2-1000.jpg 667w, img/9f0c9c6f22f2-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Helle Lamellen in einer Glasfassade" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6621"><img src="img/f4ef014c53fe-1000.jpg" srcset="img/f4ef014c53fe-1000.jpg 662w, img/f4ef014c53fe-2000.jpg 1324w" sizes="(max-width:760px) 50vw, 25vw" width="1589" height="2400" alt="Halbtransparentes Rollo im Badezimmer" loading="lazy"></span>
+<span class="it" style="flex-grow:0.5854"><img src="img/aa77c5591465-1000.jpg" srcset="img/aa77c5591465-1000.jpg 585w, img/aa77c5591465-2000.jpg 1171w" sizes="(max-width:760px) 50vw, 25vw" width="1405" height="2400" alt="Dunkle gemusterte Lamellen vor einer Fenstertür" loading="lazy"></span>
+<span class="it" style="flex-grow:0.6667"><img src="img/be95b82b4b38-1000.jpg" srcset="img/be95b82b4b38-1000.jpg 667w, img/be95b82b4b38-2000.jpg 1333w" sizes="(max-width:760px) 50vw, 25vw" width="1600" height="2400" alt="Helle Lamellen vor einem Fenster mit Blick ins Grüne" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/imbit.html">
+<div class="txt"><h2>IMBIT</h2><p>Architekturfotografie des Forschungsgebäudes der Universität Freiburg (2021)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:1.5000"><img src="img/867a6afec207-1000.jpg" srcset="img/867a6afec207-1000.jpg 1000w, img/867a6afec207-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Neubau mit Glasfassade, Wiese und Weg im Vordergrund" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/9c284dd06bb8-1000.jpg" srcset="img/9c284dd06bb8-1000.jpg 1000w, img/9c284dd06bb8-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Halle mit glänzendem Boden und Fensterfront" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/2353e5ce57b5-1000.jpg" srcset="img/2353e5ce57b5-1000.jpg 1000w, img/2353e5ce57b5-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Treppe im Sichtbeton mit Lichteinfall" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/f9c993f83674-1000.jpg" srcset="img/f9c993f83674-1000.jpg 1000w, img/f9c993f83674-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Küche mit Holzfronten und runden Leuchten" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/887e372fbfd9-1000.jpg" srcset="img/887e372fbfd9-1000.jpg 1000w, img/887e372fbfd9-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Innenhof mit Skulptur, gesehen durch Glas" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/37373e4d9039-1000.jpg" srcset="img/37373e4d9039-1000.jpg 1000w, img/37373e4d9039-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Langer Tisch vor einer Fensterfront" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/51656fc77bfa-1000.jpg" srcset="img/51656fc77bfa-1000.jpg 1000w, img/51656fc77bfa-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Offener Raum mit Lichtmuster auf dem Boden" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/villa-hammer.html">
+<div class="txt"><h2>Villa Hammer</h2><p>Architekturfotografie in Basel für Sauter von Moos (2019)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:1.4981"><img src="img/55aa19f26e9e-1000.jpg" srcset="img/55aa19f26e9e-1000.jpg 1000w, img/55aa19f26e9e-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1602" alt="Weisses Haus mit Garten und Bäumen von schräg oben" loading="lazy"></span>
+<span class="it" style="flex-grow:1.4981"><img src="img/b57439c487ca-1000.jpg" srcset="img/b57439c487ca-1000.jpg 1000w, img/b57439c487ca-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1602" alt="Spiegel mit dem Blick durch eine Wandöffnung" loading="lazy"></span>
+<span class="it" style="flex-grow:1.4981"><img src="img/07ff242dcc1a-1000.jpg" srcset="img/07ff242dcc1a-1000.jpg 1000w, img/07ff242dcc1a-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1602" alt="Raum mit Vorhang, Holzdecke und Sonnenlicht auf dem Boden" loading="lazy"></span>
+<span class="it" style="flex-grow:1.4981"><img src="img/a17ab2188eee-1000.jpg" srcset="img/a17ab2188eee-1000.jpg 1000w, img/a17ab2188eee-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1602" alt="Flur mit Holztüren, Holzdecke und Oberlicht" loading="lazy"></span>
+<span class="it" style="flex-grow:1.4981"><img src="img/a1d3a7877f3c-1000.jpg" srcset="img/a1d3a7877f3c-1000.jpg 1000w, img/a1d3a7877f3c-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1602" alt="Hauseingang mit runden Fenstern und Treppe" loading="lazy"></span>
+<span class="it" style="flex-grow:1.4981"><img src="img/6e7e4c598d04-1000.jpg" srcset="img/6e7e4c598d04-1000.jpg 1000w, img/6e7e4c598d04-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1602" alt="Wandöffnung mit Blick in den hellen Flur" loading="lazy"></span>
+</div>
+</a>
+<a class="proj" href="projekte/freie-arbeiten.html">
+<div class="txt"><h2>Freie Arbeiten</h2><p>Eigene Serien zu Nacht, Hallen und Bergen (2017 bis 2026)</p></div>
+<div class="imgs">
+<span class="it" style="flex-grow:0.7500"><img src="img/da3abee1230c-1000.jpg" srcset="img/da3abee1230c-1000.jpg 750w, img/da3abee1230c-2000.jpg 1500w" sizes="(max-width:760px) 50vw, 25vw" width="1800" height="2400" alt="Halle zur blauen Stunde" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/9037be991173-1000.jpg" srcset="img/9037be991173-1000.jpg 1000w, img/9037be991173-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Promenade mit Bänken in der Nacht" loading="lazy"></span>
+<span class="it" style="flex-grow:0.8000"><img src="img/15c52802bc3d-1000.jpg" srcset="img/15c52802bc3d-1000.jpg 800w, img/15c52802bc3d-2000.jpg 1600w" sizes="(max-width:760px) 50vw, 25vw" width="1920" height="2400" alt="Grünes Waschbecken mit Armatur" loading="lazy"></span>
+<span class="it" style="flex-grow:1.2500"><img src="img/5d1e9412dad5-1000.jpg" srcset="img/5d1e9412dad5-1000.jpg 1000w, img/5d1e9412dad5-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1920" alt="Hochebene mit Bergen und Wolken" loading="lazy"></span>
+<span class="it" style="flex-grow:1.3333"><img src="img/9ffa894c9b1c-1000.jpg" srcset="img/9ffa894c9b1c-1000.jpg 1000w, img/9ffa894c9b1c-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1800" alt="Hallendach vor hellblauem Himmel" loading="lazy"></span>
+<span class="it" style="flex-grow:1.5000"><img src="img/395bc26b9571-1000.jpg" srcset="img/395bc26b9571-1000.jpg 1000w, img/395bc26b9571-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1600" alt="Wolken über dem Meer in der Nacht" loading="lazy"></span>
+<span class="it" style="flex-grow:1.2500"><img src="img/6cedd30d0a65-1000.jpg" srcset="img/6cedd30d0a65-1000.jpg 1000w, img/6cedd30d0a65-2000.jpg 2000w" sizes="(max-width:760px) 50vw, 25vw" width="2400" height="1920" alt="Bergflanke mit Blick ins Tal" loading="lazy"></span>
+</div>
+</a>
+</div>
+<div class="list"><div class="wrap">
+<table>
+<thead><tr><th><span class="sr">Vorschau</span></th><th>Projekt</th><th>Auftraggeber</th><th>Kategorie</th><th>Medium</th><th class="y">Jahr</th></tr></thead>
+<tbody>
+<tr data-href="projekte/showreel.html"><td class="tthumb"><img src="img/f2f97adc882f-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/showreel.html">Showreel 2026</a></td><td>Eigenproduktion</td><td class="m">Showreel</td><td class="m">Video</td><td class="y">2026</td></tr>
+<tr data-href="projekte/colorful-neighbourhood.html"><td class="tthumb"><img src="img/e9eda4557e0c-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/colorful-neighbourhood.html">Colorful Neighbourhood</a></td><td>Colorful Neighbourhood</td><td class="m">Bildwelt, Interieur, Menschen</td><td class="m">Foto</td><td class="y">2026</td></tr>
+<tr data-href="projekte/seven-purple-tigers.html"><td class="tthumb"><img src="img/abcf3ff16cac-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/seven-purple-tigers.html">Seven Purple Tigers</a></td><td>Seven Purple Tigers</td><td class="m">Event, Konzert</td><td class="m">Foto</td><td class="y">2022</td></tr>
+<tr data-href="projekte/hermann-scherer.html"><td class="tthumb"><img src="img/b849b37de5a9-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/hermann-scherer.html">Hermann Scherer, Kunstmuseum Basel</a></td><td>Peter Bosshart</td><td class="m">Ausstellung, Kunst</td><td class="m">Foto</td><td class="y">2022</td></tr>
+<tr data-href="projekte/dreilaendereck.html"><td class="tthumb"><img src="img/87768e202f77-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/dreilaendereck.html">Dreiländereck</a></td><td>HGK Basel, Masterprojekt</td><td class="m">Dokumentation, Archiv</td><td class="m">Foto</td><td class="y">2025</td></tr>
+<tr data-href="projekte/schoonheid-cosmetics.html"><td class="tthumb"><img src="img/3f17d7020bc3-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/schoonheid-cosmetics.html">Schoonheid Cosmetics</a></td><td>Schoonheid Cosmetics</td><td class="m">Porträt, Interieur</td><td class="m">Foto</td><td class="y">2025</td></tr>
+<tr data-href="projekte/eggimann.html"><td class="tthumb"><img src="img/44bced6326ff-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/eggimann.html">Weine der Familie Eggimann</a></td><td>Familie Eggimann</td><td class="m">Reportage</td><td class="m">Foto</td><td class="y">2024</td></tr>
+<tr data-href="projekte/creation-baumann.html"><td class="tthumb"><img src="img/d64ee00460ca-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/creation-baumann.html">Création Baumann</a></td><td>Création Baumann</td><td class="m">Produkt, Interieur</td><td class="m">Foto</td><td class="y">2020</td></tr>
+<tr data-href="projekte/imbit.html"><td class="tthumb"><img src="img/867a6afec207-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/imbit.html">IMBIT</a></td><td>Universität Freiburg</td><td class="m">Architektur</td><td class="m">Foto</td><td class="y">2021</td></tr>
+<tr data-href="projekte/villa-hammer.html"><td class="tthumb"><img src="img/55aa19f26e9e-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/villa-hammer.html">Villa Hammer</a></td><td>Sauter von Moos</td><td class="m">Architektur</td><td class="m">Foto</td><td class="y">2019</td></tr>
+<tr data-href="projekte/freie-arbeiten.html"><td class="tthumb"><img src="img/da3abee1230c-1000.jpg" alt="" width="64" height="44" loading="lazy"></td><td class="name"><a href="projekte/freie-arbeiten.html">Freie Arbeiten</a></td><td>Eigene Arbeit</td><td class="m">Freie Arbeit</td><td class="m">Foto</td><td class="y">2017 bis 2026</td></tr>
+</tbody>
+</table>
+</div></div>
+</main>
+<div class="zoom-m mob"><button type="button" data-z="less" aria-label="Bilder kleiner"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12"/></svg></button><button type="button" data-z="more" aria-label="Bilder grösser"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h12M8 2v12"/></svg></button></div>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
